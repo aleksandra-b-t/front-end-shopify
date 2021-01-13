@@ -47,8 +47,10 @@ const App =() => {
   }
 
   const removeNominatedMovie = (movie) => {
-    const newNominatedList = nominatedMovies.filter((nominatedMovie)=> nominatedMovie.imdbID !== movie.imdbID);
+    const newNominatedList = nominatedMovies.filter(
+      (nominatedMovie)=> nominatedMovie.imdbID !== movie.imdbID);
     setNominatedMovies(newNominatedList);
+    saveNomination(newNominatedList);
   }
 
     return (
