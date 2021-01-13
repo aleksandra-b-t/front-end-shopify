@@ -9,8 +9,8 @@ body {
   background-color: #0B132B;
 }
 .App {
-  position: absolute;
-  width:100%;
+  position: relative;
+  width:auto;
   height: 100%;
   display:flex;
   min-height: 100vh;
@@ -46,12 +46,23 @@ body {
   justify-content: space-between;
 }
 .movie-list{
+  display: flex;
   margin-top: 30px;
   border-style: dashed;
   margin-left: 50px;
   overflow: scroll;
   height: 800px;
+  width: 66%;
   padding: 30px;
+}
+.movie-container{
+ flex-wrap: wrap;
+ display: flex;
+ width: 100%;
+}
+.poster-container{
+  width: 30%;
+  /* margin: 0; */
 }
 .nominated-list{
 position: absolute;

@@ -3,9 +3,9 @@ import React from 'react'
 const MovieList = (props) => {
     const NominatedMovies = props.nominate;
     return (
-        <div>
+        <div className='movie-container'>
             {props.movies.map((movie, index) => (
-                <div>
+                <div className='poster-container'>
                     <img src={movie.Poster} className='poster' alt='movie'></img>
                     <div onClick={() => props.handleNominationClick(movie)} >
                         <NominatedMovies/>
