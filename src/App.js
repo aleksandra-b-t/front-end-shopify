@@ -29,13 +29,26 @@ const App =() => {
     getMovieRequest(searchValue)
   }, [searchValue]);
 
+  useEffect(() => {
+    const nominatedMovies = JSON.parse(
+      localStorage.getItem('movie-awards-nominations')
+    );
+    setNominatedMovies(nominatedMovies);
+  }, []);
+
+  const saveNomination = (items) => {
+    localStorage.setItem('movie-awards-nominations', JSON.stringify(items))
+  }
+
   const nominateMovie = (movie) => {
     const newNominatedList = [...nominatedMovies, movie];
     setNominatedMovies(newNominatedList);
+    saveNomination(newNominatedList)
   }
 
   const removeNominatedMovie = (movie) => {
-    
+    const newNominatedList = nominatedMovies.filter((nominatedMovie)=> nominatedMovie.imdbID !== movie.imdbID);
+    setNominatedMovies(newNominatedList);
   }
 
     return (
@@ -44,7 +57,7 @@ const App =() => {
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
         {/* <Starter/> */}
         <MovieList movies={movies} handleNominationClick={nominateMovie} nominate={Nominated}/>
-        <MovieList movies={nominatedMovies} handleNominationClick={nominateMovie} nominate={RemoveNomination}/>
+        <MovieList movies={nominatedMovies} handleNominationClick={removeNominatedMovie} nominate={RemoveNomination}/>
       </div>
     );
   
