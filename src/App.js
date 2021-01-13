@@ -55,11 +55,19 @@ const App =() => {
 
     return (
       <div>
-        <Heading heading="Movie Awards"/>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
-        {/* <Starter/> */}
-        <MovieList movies={movies} handleNominationClick={nominateMovie} nominate={Nominated}/>
-        <MovieList movies={nominatedMovies} handleNominationClick={removeNominatedMovie} nominate={RemoveNomination}/>
+        <Starter/>
+        <div className="top">
+          <Heading heading="Movie Awards"/>
+          <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
+        </div>
+        <div className='nomination'>
+          <div className='movie-list'>
+            <MovieList movies={movies} handleNominationClick={nominateMovie} nominate={Nominated}/>
+          </div>
+          <div className='nominated-list'>
+            <MovieList movies={nominatedMovies} handleNominationClick={removeNominatedMovie} nominate={RemoveNomination}/>
+          </div>
+        </div>
       </div>
     );
   
