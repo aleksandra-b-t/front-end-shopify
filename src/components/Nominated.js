@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Nominated = () => {
+const Nominated = (props) => {
     return (
         <div>
             <h1>Nominated</h1>
