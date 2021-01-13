@@ -3,7 +3,7 @@ import React from 'react'
 const RemoveNomination = () => {
     return (
         <div>
-            <button>Remove</button>
+            <button className='button'>Remove</button>
         </div>
     )
 }

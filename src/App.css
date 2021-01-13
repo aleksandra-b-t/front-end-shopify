@@ -7,17 +7,14 @@ body {
   font-family: 'montserrat', sans-serif;
   color: #F5F5F5;
   background-color: #0B132B;
-  /* margin-right: auto;
-  margin-left:  auto;
-  max-width: 960px;
-  padding-right: 10px;
-  padding-left:  10px; */
 }
 .App {
-  position: relative;
+  position: absolute;
+  width:100%;
+  height: 100%;
+  display:flex;
   min-height: 100vh;
   background: radial-gradient(#0B132B, #000);
-  /* display: flex; */
   padding: 1rem;
   padding-bottom: 10rem;
   flex-flow: row wrap;
@@ -30,9 +27,12 @@ body {
 }
 .search-box {
   justify-self: center;
-    height: 30px;
-    width: 400px;
-    margin-left: 15px;
+  font-size: 16px;
+  font-weight: bolder;
+  font-family: 'montserrat', sans-serif;
+  height: 30px;
+  width: 400px;
+  margin-left: 15px;
 }
 .search-box::placeholder {
   color: #b5bbc9;
@@ -48,21 +48,47 @@ body {
 .movie-list{
   margin-top: 30px;
   border-style: dashed;
-  height: auto;
   margin-left: 50px;
   overflow: scroll;
   height: 800px;
-  max-width: 600px;
   padding: 30px;
 }
 .nominated-list{
-position: sticky;
+position: absolute;
+right: 0;
 margin-top: 30px;
 border-style: double;
 margin-right: 50px;
 padding: 30px;
+height: 800px;
+overflow: scroll;
 }
 .poster{
+  display: inline;
   height: 300px;
   width: 200px;
+  position: relative;
+	transition: transform 0.2s;
+}
+.poster:hover{
+  cursor: pointer;
+	transform: scale(1.1);
+}
+.button {
+  position: relative;
+  margin-bottom: 10px;
+  top: 0;
+  background-color: #334BB7;
+  color: #b5bbc9;
+  border-radius: 30px;
+  height: 26px;
+  /* width: 25px; */
+  font-size: 20px;
+  font-weight: bolder;
+  align-content: center;
+
+}
+.button:hover{
+  cursor: pointer;
+	transform: scale(1.1);
 }

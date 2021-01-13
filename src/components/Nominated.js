@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-const Nominated = (props) => {
+const Nominated = () => {
     return (
-        <>
-            <button>Nominate</button>
-        </>
+        <div>
+            <button className='button'>Nominate !</button>
+        </div>
     )
 }
 

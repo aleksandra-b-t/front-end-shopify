@@ -13,9 +13,10 @@ const App =() => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [nominatedMovies, setNominatedMovies] = useState([]);
+  const key = process.env.REACT_APP_KEY
 
   const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=e546f4ed`
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${key}`
     const res = await fetch(url);
     const resJson = await res.json();
 
@@ -65,6 +66,7 @@ const App =() => {
             <MovieList movies={movies} handleNominationClick={nominateMovie} nominate={Nominated}/>
           </div>
           <div className='nominated-list'>
+            <Heading heading="Nominated:"/>
             <MovieList movies={nominatedMovies} handleNominationClick={removeNominatedMovie} nominate={RemoveNomination}/>
           </div>
         </div>
