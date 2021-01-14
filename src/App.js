@@ -14,8 +14,8 @@ const App =() => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [nominatedMovies, setNominatedMovies] = useState([]);
-  const firstTime = true;
-  const key = process.env.REACT_APP_KEY
+  const [firstTime, setFirstTime] = useState(true);
+  const key = process.env.REACT_APP_KEY;
 
   const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${key}`
@@ -24,13 +24,13 @@ const App =() => {
 
     if(resJson.Search){
       setMovies(resJson.Search)
-    }
-    
-  }
+    };
+  };
 
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue]);
+
 
   useEffect(() => {
     const nominatedMovies = JSON.parse(
@@ -39,9 +39,15 @@ const App =() => {
     setNominatedMovies(nominatedMovies);
   }, []);
 
+  const handleStart = () => {
+    const isFirstTime = !firstTime;
+    setFirstTime(isFirstTime);
+  };
+  
+
   const saveNomination = (items) => {
     localStorage.setItem('movie-awards-nominations', JSON.stringify(items))
-  }
+  };
 
   const nominateMovie = (movie) => {
     const newNominatedList = [...nominatedMovies, movie];
@@ -59,10 +65,10 @@ const App =() => {
     setNominatedMovies(newNominatedList);
     saveNomination(newNominatedList);
   }
-  if(nominatedMovies.length === 0){
+  if(firstTime === true && nominatedMovies.length === 0){
     return (
     <div>
-      <Starter/>
+      <Starter first={handleStart}/>
     </div>)
   } else {
     return (
