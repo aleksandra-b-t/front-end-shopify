@@ -9,7 +9,6 @@ import RemoveNomination from "./components/RemoveNomination";
 import Count from './components/Count';
 
 
-
 const App =() => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -44,7 +43,6 @@ const App =() => {
     setFirstTime(isFirstTime);
   };
   
-
   const saveNomination = (items) => {
     localStorage.setItem('movie-awards-nominations', JSON.stringify(items))
   };
@@ -65,6 +63,8 @@ const App =() => {
     setNominatedMovies(newNominatedList);
     saveNomination(newNominatedList);
   }
+
+  
   if(firstTime === true && nominatedMovies.length === 0){
     return (
     <div>

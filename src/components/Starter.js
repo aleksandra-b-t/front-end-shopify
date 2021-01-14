@@ -1,5 +1,4 @@
 import React from 'react';
-import App from '../App';
 import './Starter.css';
 import Background from './video/background.mp4';
 
