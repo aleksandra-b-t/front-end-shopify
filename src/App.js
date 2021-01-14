@@ -6,6 +6,7 @@ import Nominated from "./components/Nominated";
 import Heading from './components/Heading';
 import SearchBox from './components/SearchBox';
 import RemoveNomination from "./components/RemoveNomination";
+import Count from './components/Count';
 
 
 
@@ -13,6 +14,7 @@ const App =() => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [nominatedMovies, setNominatedMovies] = useState([]);
+  const firstTime = true;
   const key = process.env.REACT_APP_KEY
 
   const getMovieRequest = async (searchValue) => {
@@ -43,8 +45,12 @@ const App =() => {
 
   const nominateMovie = (movie) => {
     const newNominatedList = [...nominatedMovies, movie];
+    if (newNominatedList.length <= 5) {
     setNominatedMovies(newNominatedList);
     saveNomination(newNominatedList)
+    } else {
+      alert("You can nominate only 5 movies!")
+    }
   }
 
   const removeNominatedMovie = (movie) => {
@@ -53,10 +59,14 @@ const App =() => {
     setNominatedMovies(newNominatedList);
     saveNomination(newNominatedList);
   }
-
+  if(nominatedMovies.length === 0){
+    return (
+    <div>
+      <Starter/>
+    </div>)
+  } else {
     return (
       <div>
-        <Starter/>
         <div className="top">
           <Heading heading="Movie Awards"/>
           <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
@@ -66,13 +76,16 @@ const App =() => {
             <MovieList movies={movies} handleNominationClick={nominateMovie} nominate={Nominated}/>
           </div>
           <div className='nominated-list'>
-            <Heading heading="Nominated:"/>
+            <div className='heading-nomination'>
+              <Heading heading="Nominated:"/>
+              <Count movies={nominatedMovies}/>
+            </div>
             <MovieList movies={nominatedMovies} handleNominationClick={removeNominatedMovie} nominate={RemoveNomination}/>
           </div>
         </div>
       </div>
     );
-  
+  }
 }
 
 export default App;
