@@ -18,4 +18,4 @@ Built for the Summer 2021 Shopify UX and Web Developer Challenge
 * **CSS** - All the styling is done in CSS and no external libraries were used.
 * **HTML**
 
-### [DEMO](https://)
+### [DEMO](https://movies-award-app.web.app)
