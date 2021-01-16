@@ -20,7 +20,6 @@ const App =() => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=${key}`
     const res = await fetch(url);
     const resJson = await res.json();
-
     if(resJson.Search){
       setMovies(resJson.Search)
     };
@@ -35,7 +34,9 @@ const App =() => {
     const nominatedMovies = JSON.parse(
       localStorage.getItem('movie-awards-nominations')
     );
-    setNominatedMovies(nominatedMovies);
+    if (nominatedMovies){
+      setNominatedMovies(nominatedMovies);
+    }
   }, []);
 
   const handleStart = () => {

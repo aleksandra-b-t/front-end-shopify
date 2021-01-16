@@ -5,10 +5,10 @@ const MovieList = (props) => {
     return (
         <div className='movie-container'>
             {props.movies.map((movie, index) => (
-                <div className='poster-container'>
-                    <img src={movie.Poster} className='poster' alt='movie'></img>
+                <div className='poster-container' key={index}>
+                    <img src={movie.Poster}  className='poster' alt='movie'></img>
                     <div onClick={() => props.handleNominationClick(movie)} >
-                        <NominatedMovies/>
+                        <NominatedMovies />
                     </div>
                 </div>
             ))}
